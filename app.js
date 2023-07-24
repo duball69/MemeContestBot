@@ -23,17 +23,22 @@ bot.command('submit', (ctx) => {
 bot.command('help', helpCommand);
 bot.command('find', findCommand);
 
-// Set the Telegram bot webhook
-async function setWebhook() {
-  const webhookURL = process.env.HEROKU_WEBHOOK_URL;
+// Set the Telegram bot webhook after a delay
+async function setWebhookAfterDelay() {
+  await new Promise((resolve) => setTimeout(resolve, 60000)); // 60 seconds delay
   try {
-    await bot.telegram.setWebhook(`${webhookURL}/bot${process.env.TELEGRAM_BOT_TOKEN}`);
+    const port = process.env.PORT || 3000; // Use the provided PORT or default to 3000
+    await bot.telegram.setWebhook(
+      `${process.env.HEROKU_WEBHOOK_URL}/bot${process.env.TELEGRAM_BOT_TOKEN}`,
+      null,
+      port
+    );
     console.log('Webhook set successfully!');
   } catch (error) {
     console.error('Error setting webhook:', error);
   }
 }
 
-// Call the setWebhook function to set up the webhook
-setWebhook();
-
+// Call the setWebhookAfterDelay function to set up the webhook
+setWebhookAfterDelay();
+  
