@@ -3,3 +3,4 @@
 
 # Ignore the serviceAccountKey.json file
 serviceAccountKey.json
+.vercel
