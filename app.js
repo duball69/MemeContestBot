@@ -58,10 +58,3 @@ bot.launch({
     port: process.env.PORT || 3000,
   }
 });
-
-// Keep the app alive by pinging it every 1 minute
-const http = require('http');
-
-setInterval(() => {
-  http.get("https://memecontestbot-64759ddc797a.herokuapp.com/");
-}, 60 * 1000); // every 1 minute
