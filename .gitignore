@@ -4,3 +4,8 @@
 # Ignore the serviceAccountKey.json file
 serviceAccountKey.json
 .vercel
+
+
+#Ignore node_modules
+    
+node_modules/
