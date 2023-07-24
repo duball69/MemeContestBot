@@ -52,9 +52,5 @@ bot.command('help', helpCommand);
 bot.command('find', findCommand);
 
 // Start the bot
-bot.launch({
-  webhook: {
-    domain: process.env.HEROKU_APP_NAME + ".herokuapp.com",
-    port: process.env.PORT || 3000,
-  }
-});
+bot.launch();
+
