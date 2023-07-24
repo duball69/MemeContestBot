@@ -51,5 +51,6 @@ bot.command('help', helpCommand);
 // /find command handler
 bot.command('find', findCommand);
 
-// Start the bot polling
-bot.launchPolling();
+// Start the bot
+bot.launch();
+
