@@ -1,0 +1,22 @@
+{
+    "name": "memecontestbot",
+    "version": "1.0.0",
+    "description": "A Web3 Telegram Bot to create meme competitions and earn with submitted memes",
+    "author": {
+      "name": "Duball69",
+      "github": "https://github.com/duball69",
+      "twitter": "https://twitter.com/duball69"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/duball69/MemeContestBot.git"},
+    "dependencies": {
+      "telegraf": "4.12.2",
+      "firebase-admin": "11.10.1"
+    },
+    "scripts": {
+      "start": "node app.js"
+    }
+  }
+  
