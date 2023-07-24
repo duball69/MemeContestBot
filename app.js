@@ -47,6 +47,15 @@ app.use(bot.webhookCallback('/secret-path'));
 // Start the Express server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Listening on ${port}`);
+  console.log(`Express server is listening on port ${port}`);
 });
-  
+
+// Error handling for Express
+app.on('error', (err) => {
+  console.error('Express error:', err);
+});
+
+// Error handling for Telegraf
+bot.catch((err, ctx) => {
+  console.error('Telegraf error:', err);
+});
