@@ -63,5 +63,19 @@ bot.launch({
   },
 });
 
+// Set the Telegram bot webhook after a delay
+async function setWebhookAfterDelay() {
+  await new Promise((resolve) => setTimeout(resolve, 60000)); // 60 seconds delay
+  try {
+    await bot.telegram.setWebhook(
+      `${process.env.HEROKU_WEBHOOK_URL}/bot${process.env.TELEGRAM_BOT_TOKEN}`
+    );
+    console.log('Webhook set successfully!');
+  } catch (error) {
+    console.error('Error setting webhook:', error);
+  }
+}
+
+setWebhookAfterDelay();
 
 
