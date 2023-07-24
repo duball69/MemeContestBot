@@ -54,3 +54,8 @@ bot.command('find', findCommand);
 // Start the bot
 bot.launch();
 
+const http = require('http');
+
+setInterval(() => {
+  http.get("https://memecontestbot-64759ddc797a.herokuapp.com/");
+}, 60 * 1000); // every 1 minute
