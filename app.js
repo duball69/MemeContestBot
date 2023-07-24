@@ -18,7 +18,7 @@ const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 async function setWebhook() {
   const fetch = await import('node-fetch');
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
-  const webhookURL = process.env.HEROKU_WEBHOOK_URL;;
+  const webhookURL = process.env.HEROKU_WEBHOOK_URL;
 
   const apiUrl = `https://api.telegram.org/bot${botToken}/setWebhook?url=${webhookURL}/bot${botToken}`;
 
@@ -58,7 +58,7 @@ bot.command('find', findCommand);
 // Start the bot
 bot.launch({
   webhook: {
-    domain: webhookURL,
+    domain: process.env.HEROKU_WEBHOOK_URL,
     port: process.env.PORT,
   },
 });
