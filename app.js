@@ -54,6 +54,7 @@ bot.command('find', findCommand);
 // Start the bot
 bot.launch();
 
+// Keep the app alive by pinging it every 1 minute
 const http = require('http');
 
 setInterval(() => {
