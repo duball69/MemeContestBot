@@ -1,3 +1,4 @@
+const express = require('express');
 const { Telegraf } = require('telegraf');
 const { initializeFirebase } = require('./firebaseHandler');
 const { startCommand } = require('./commands/start.js');
@@ -23,22 +24,28 @@ bot.command('submit', (ctx) => {
 bot.command('help', helpCommand);
 bot.command('find', findCommand);
 
-// Set the Telegram bot webhook after a delay
-async function setWebhookAfterDelay() {
-  await new Promise((resolve) => setTimeout(resolve, 60000)); // 60 seconds delay
+// Set the Telegram bot webhook
+async function setWebhook() {
+  const webhookURL = process.env.HEROKU_WEBHOOK_URL;
   try {
-    const port = process.env.PORT || 3000; // Use the provided PORT or default to 3000
-    await bot.telegram.setWebhook(
-      `${process.env.HEROKU_WEBHOOK_URL}/bot${process.env.TELEGRAM_BOT_TOKEN}`,
-      null,
-      port
-    );
+    await bot.telegram.setWebhook(`${webhookURL}/bot${process.env.TELEGRAM_BOT_TOKEN}`);
     console.log('Webhook set successfully!');
   } catch (error) {
     console.error('Error setting webhook:', error);
   }
 }
 
-// Call the setWebhookAfterDelay function to set up the webhook
-setWebhookAfterDelay();
-  
+// Call the setWebhook function to set up the webhook
+setWebhook();
+
+// Create an Express app
+const app = express();
+
+// Use the webhook callback
+app.use(bot.webhookCallback('/secret-path'));
+
+// Start the Express server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Listening on ${port}`);
+});
