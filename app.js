@@ -31,6 +31,10 @@ async function setWebhook() {
   }
 }
 
+
+const port = process.env.PORT || 3000;
+
+
 // Call the setWebhook function to set up the webhook
 setWebhook();
 
@@ -52,5 +56,12 @@ bot.command('help', helpCommand);
 bot.command('find', findCommand);
 
 // Start the bot
-bot.launch();
+bot.launch({
+  webhook: {
+    domain: webhookURL,
+    port: process.env.PORT,
+  },
+});
+
+
 
