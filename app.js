@@ -1,7 +1,7 @@
 const { Telegraf } = require('telegraf');
 const { initializeFirebase } = require('./firebaseHandler');
 const { startCommand } = require('./commands/start.js');
-const { createCommand } = require('./commands/create');
+const { createCommand } = require('./commands/create'); // Correct the path for the create.js file
 const { submitCommand } = require('./commands/submit');
 const { helpCommand } = require('./commands/help');
 const { findCommand } = require('./commands/find');
