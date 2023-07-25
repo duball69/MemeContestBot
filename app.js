@@ -16,7 +16,7 @@ const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
 // Command handlers
 bot.start(startCommand);
-bot.command('create', createCommand);
+bot.command('create', (ctx) => createCommand(ctx,bot)); ;
 bot.command('submit', (ctx) => {
   ctx.reply('You have used /submit command.');
 });
